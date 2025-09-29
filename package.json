@@ -1,0 +1,30 @@
+
+{
+  "name": "metric-imperial-converter",
+  "version": "1.0.0",
+  "description": "A full stack JavaScript app for converting between metric and imperial units",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "cross-env NODE_ENV=test mocha tests/ --recursive --reporter spec",
+    "test-auto": "cross-env NODE_ENV=test mocha tests/ --recursive --reporter spec --watch",
+    "test-win": "set NODE_ENV=test && mocha tests/ --recursive --reporter spec",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "mocha": "^10.2.0",
+    "chai": "^4.3.10",
+    "chai-http": "^4.4.0",
+    "nodemon": "^3.0.1",
+    "cross-env": "^7.0.3"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
