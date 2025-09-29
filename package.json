@@ -6,7 +6,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "test": "cross-env NODE_ENV=test mocha tests/ --recursive --reporter spec",
+   
+    "test": "cross-env NODE_ENV=test mocha tests/ --ui tdd --recursive --reporter spec --timeout 10000",
     "test-auto": "cross-env NODE_ENV=test mocha tests/ --recursive --reporter spec --watch",
     "test-win": "set NODE_ENV=test && mocha tests/ --recursive --reporter spec",
     "dev": "nodemon server.js"
