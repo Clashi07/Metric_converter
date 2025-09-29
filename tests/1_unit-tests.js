@@ -1,4 +1,3 @@
-// tests/1_unit-tests.js
 const chai = require('chai');
 let assert = chai.assert;
 const ConvertHandler = require('../controllers/convertHandler.js');

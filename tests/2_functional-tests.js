@@ -1,4 +1,3 @@
-// tests/2_functional-tests.js
 const chaiHttp = require('chai-http');
 const chai = require('chai');
 let assert = chai.assert;

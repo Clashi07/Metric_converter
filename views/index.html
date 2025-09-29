@@ -24,11 +24,11 @@
       <h2>Example Return:</h2>
       <code>{"initNum":3.1,"initUnit":"mi","returnNum":4.98895,"returnUnit":"km","string":"3.1 miles converts to 4.98895 kilometers"}</code>
       
-      <div id="convertForm">
+      <form action="/api/convert" method="get" id="convertForm">
         <h2>Front End:</h2>
-        <input type="text" id="convertField" placeholder="4gal, 1/2km, 2.5mi, 300g, etc." style="width: 200px">
-        <button type="button" id="convertButton">Convert!</button>
-      </div>
+        <input type="text" id="convertField" name="input" placeholder="4gal, 1/2km, 2.5mi, 300g, etc." style="width: 200px">
+        <input type="submit" value="Convert!">
+      </form>
       
       <p id="result"></p>
       <p id="error"></p>
@@ -36,7 +36,8 @@
   </main>
 
   <script>
-    document.getElementById('convertButton').addEventListener('click', function() {
+    document.getElementById('convertForm').addEventListener('submit', function(e) {
+      e.preventDefault();
       
       const input = document.getElementById('convertField').value;
       const resultDiv = document.getElementById('result');
@@ -51,14 +52,9 @@
         return;
       }
       
-      // Show loading message
-      resultDiv.innerHTML = 'Converting...';
-      
       fetch(`/api/convert?input=${encodeURIComponent(input)}`)
         .then(response => response.json())
         .then(data => {
-          resultDiv.innerHTML = ''; // Clear loading message
-          
           if (typeof data === 'string') {
             // Error message
             errorDiv.innerHTML = `Error: ${data}`;
@@ -72,17 +68,9 @@
           }
         })
         .catch(error => {
-          resultDiv.innerHTML = ''; // Clear loading message
           errorDiv.innerHTML = 'An error occurred during conversion';
           console.error('Error:', error);
         });
-    });
-    
-    // Allow Enter key to trigger conversion
-    document.getElementById('convertField').addEventListener('keypress', function(e) {
-      if (e.key === 'Enter') {
-        document.getElementById('convertButton').click();
-      }
     });
   </script>
 </body>

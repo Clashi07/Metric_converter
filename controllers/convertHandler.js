@@ -1,4 +1,3 @@
-// controllers/convertHandler.js
 function ConvertHandler() {
   
   this.getNum = function(input) {
@@ -59,7 +58,7 @@ function ConvertHandler() {
     let validUnits = ['gal', 'l', 'mi', 'km', 'lbs', 'kg'];
     
     if (validUnits.includes(unit)) {
-      // Return proper case for Liter
+      // Return lowercase except for liter which should be 'L'
       result = unit === 'l' ? 'L' : unit;
     } else {
       result = 'invalid unit';
@@ -152,7 +151,7 @@ function ConvertHandler() {
         result = initNum / miToKm;
         break;
       default:
-        result = 'invalid unit';
+        return 'invalid unit';
     }
     
     return Math.round(result * 100000) / 100000; // Round to 5 decimal places
